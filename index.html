@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div class="header">
+            <div class="logo">
+                <img src="" alt="">
+                <h1>Library</h1>
+            </div>
+
+            <div class="user-nav">
+                <div class="search">
+                    <label for="searchButton">
+                    <img src="" alt="">
+                    <input type="text" id="searchButton" placeholder="Search a book...">
+                    </label>
+                </div>
+
+                <ul>
+                    <li><img src="" alt=""><h4>Home</h4></li>
+                    <li><img src="" alt=""><h4>Profile</h4></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="main-content">
+            
+                <div class="show-book-button">
+                    <button type="button" id="showBookButton">Add book</button>
+                </div>
+
+                <dialog id="addBookModal">
+                    <form>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title">
+                        <label for="author">Author</label>
+                        <input type="text" name="author" id="author">
+                        <label for="pages">Pages</label>
+                        <input type="number" name="pages" id="pages">
+                        <label for="status">Status</label>
+                        <input type="checkbox" name="status" id="status" checked>
+
+                        <button id="addBookButton">Confirm</button>
+                        
+                    </form>
+                </dialog>
+
+            <div class="books-container">
+                <div class="book">
+                    <h3 class="titleContainer">Title</h3>
+                    <p class="author">Author</p>
+                    <p class="pages">10</p>
+                    <p class="status">Read</p>
+                </div>
+
+                <div class="book">
+                    <h3 class="titleContainer">Title</h3>
+                    <p class="author">Author</p>
+                    <p class="pages">10</p>
+                    <p class="status">Read</p>
+                </div>
+
+                <div class="book">
+                    <h3 class="titleContainer">Title</h3>
+                    <p class="author">Author</p>
+                    <p class="pages">10</p>
+                    <p class="status">Read</p>
+                </div>
+
+                <div class="book">
+                    <h3 class="titleContainer">Title</h3>
+                    <p class="author">Author</p>
+                    <p class="pages">10</p>
+                    <p class="status">Read</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
