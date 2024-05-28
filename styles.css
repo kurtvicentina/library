@@ -94,11 +94,16 @@
     grid-auto-rows: 1fr;
     gap: 1rem;
     place-content: center;
-    border: 1px solid red;
   }
 
   .book{
     padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-left: 3px solid brown;
+    border-right: 2px solid grey;
+    font-size: 1.2rem; 
   }
 
   #addBookModal{
