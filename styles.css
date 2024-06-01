@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight&display=swap');
+
 *, *::before, *::after {
     box-sizing: border-box;
   }
@@ -21,6 +23,13 @@
   #root, #__next {
     isolation: isolate;
   }
+
+.inter {
+  font-family: "Inter Tight", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
   .main-container{
     width: 100%;
@@ -276,4 +285,22 @@ input:checked + .slider:before{
 
 .form-book-buttons > .form-book-submit > #addBookButton:hover{
   background-color: #166534;
+}
+
+.delete{
+  background-color: #7f1d1d;
+  color: #e2e8f0;
+  outline: none;
+  border: 1px solid #ccc;
+  padding: .3rem .8rem .3rem .8rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sw-del-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }

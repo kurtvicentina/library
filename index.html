@@ -7,7 +7,7 @@
     <script src="script.js" defer></script>
     <title>Library</title>
 </head>
-<body>
+<body class="inter">
 
     <div class="main-container">
 
@@ -40,7 +40,7 @@
                 </div>
 
                 <dialog id="addBookModal">
-                    <form id="bookForm" method="post">
+                    <form id="bookForm">
                         <div class="form-book-input">
                             <label for="title">Title</label>
                             <input type="text" name="title" id="title" placeholder="Title..." required>
@@ -63,52 +63,20 @@
                             <input type="hidden" name="notRead" id="notRead" value="Not yet read">
 
                         <div class="form-book-buttons">
-                            <div class="form-book-cancel">
-                                <button id="cancelBookButton">Cancel</button>
-                            </div>
 
                             <div class="form-book-submit">
-                                <button id="addBookButton" type="button">Confirm</button>
+                                <button id="addBookButton">Confirm</button>
+                            </div>
+
+                            <div class="form-book-cancel">
+                                <button id="cancelBookButton">Cancel</button>
                             </div>
                         </div>
                     </form>
                 </dialog>
 
             <div class="books-container">
-                <div class="book">
-                    <h3 class="titleContainer">Title</h3>
-                    <p class="author">Author</p>
-                    <p class="pages">10</p>
-                    <p class="status">Read
-                        <label for="switch" class="status-label"></label>
-                                <label class="switch">
-                                    <input type="checkbox" name="status" id="switch" value="Already read">
-                                    <span class="slider"></span>
-                                </label>
-                                <input type="hidden" name="notRead" id="notRead" value="Not yet read">
-                    </p>
-                </div>
 
-                <div class="book">
-                    <h3 class="titleContainer">Title</h3>
-                    <p class="author">Author</p>
-                    <p class="pages">10</p>
-                    <p class="status">Read</p>
-                </div>
-
-                <div class="book">
-                    <h3 class="titleContainer">Title</h3>
-                    <p class="author">Author</p>
-                    <p class="pages">10</p>
-                    <p class="status">Read</p>
-                </div>
-
-                <div class="book">
-                    <h3 class="titleContainer">Title</h3>
-                    <p class="author">Author</p>
-                    <p class="pages">10</p>
-                    <p class="status">Read</p>
-                </div>
             </div>
 
         </div>
