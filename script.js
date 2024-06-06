@@ -1,6 +1,9 @@
+// Existing code...
 let showBookButton = document.querySelector('#showBookButton');
 let addBookModal = document.querySelector('#addBookModal');
 
+let mainContainer = document.querySelector('.main-content');
+let searchBar = document.querySelector('#search');
 let bookForm = document.querySelector('#bookForm');
 let booksContainer = document.querySelector('.books-container');
 let titleInput = document.querySelector('#title');
@@ -8,7 +11,6 @@ let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
 let readStatus = document.querySelector('#switch');
 let notRead = document.querySelector('#notRead');
-
 
 let book;
 
@@ -20,6 +22,25 @@ showBookButton.addEventListener('click', () => {
 });
 
 const myLibrary = [];
+
+function isNoBook(array) {
+    let noBookAlert = document.querySelector('.if-no-book');
+
+    if (array.length === 0 || array.every(array => array === undefined)) {
+        if (!noBookAlert) {
+            noBookAlert = document.createElement('h1');
+            noBookAlert.setAttribute('class', 'if-no-book');
+            noBookAlert.textContent = `It looks like you don't have any books yet...`;
+            mainContainer.append(noBookAlert);
+        }
+    } else {
+        if (noBookAlert) {
+            noBookAlert.remove();
+        }
+    }
+}
+
+isNoBook(myLibrary);
 
 function Book(title, author, pages, status) {
     this.title = title;
@@ -36,8 +57,9 @@ Book.prototype.isNotRead = function (){
     return this.status = 'Not yet read'
 }
 
-
 submitButton.addEventListener('click', (e) => {
+    if(titleInput.value && authorInput.value && pagesInput.value){
+
     let inputReadStatus;
 
     if (readStatus.checked) {
@@ -54,15 +76,16 @@ submitButton.addEventListener('click', (e) => {
     addBookModal.close()
     bookForm.reset();
     addBookToLibrary(inputReadStatus);
+    isNoBook(myLibrary);
+    }
+
 });
 
-cancelButton.addEventListener('submit', () => {
+cancelButton.addEventListener('click', () => {
     addBookModal.close();
 });
 
-
 function addBookToLibrary(inputReadStatus) {
-
     let newBookContainer = document.createElement('div');
     let newBookHeader = document.createElement('h3');
     let newBookAuthor = document.createElement('p');
@@ -81,9 +104,9 @@ function addBookToLibrary(inputReadStatus) {
     newHiddenInput.value = 'Not yet read'
     let deleteButton = document.createElement('button')
 
-    newBookHeader.textContent = book.title;
-    newBookAuthor.textContent = book.author;
-    newBookPage.textContent = book.pages;
+    newBookHeader.textContent = `Title: ${book.title}`;
+    newBookAuthor.textContent = `By: ${book.author}`;
+    newBookPage.textContent = `Pages: ${book.pages}`;
     newStatusText.textContent = book.status;
     deleteButton.textContent = 'Delete'
 
@@ -92,8 +115,8 @@ function addBookToLibrary(inputReadStatus) {
     newBookContainer.setAttribute('class', 'book');
     newBookContainer.setAttribute('data-index', bookIndex)
     newBookHeader.setAttribute('class', 'title-container');
-    newBookPage.setAttribute('class', 'author');
-    newBookAuthor.setAttribute('class', 'pages');
+    newBookPage.setAttribute('class', 'pages');
+    newBookAuthor.setAttribute('class', 'author');
     newBookReadStatus.setAttribute('class', 'status');
     switchAndDelContainer.setAttribute('class', 'sw-del-container')
     newLabelContainer.setAttribute('class', 'new-status-label');
@@ -111,7 +134,6 @@ function addBookToLibrary(inputReadStatus) {
     newLabel.append(newSlider);
     newLabel.append(newHiddenInput);
 
-
     newBookContainer.append(newBookHeader);
     newBookContainer.append(newBookAuthor);
     newBookContainer.append(newBookPage);
@@ -126,6 +148,7 @@ function addBookToLibrary(inputReadStatus) {
     deleteButton.addEventListener('click', () => {
         delete myLibrary[bookIndex];
         newBookContainer.remove();
+        isNoBook(myLibrary)
     });
 
     newSwitch.addEventListener('change', () =>{
@@ -140,4 +163,19 @@ function addBookToLibrary(inputReadStatus) {
     })
 
     console.log(bookIndex)
-};
+}
+
+searchBar.addEventListener('input', () => {
+    let searchInput = searchBar.value.toLowerCase();
+    let books = document.querySelectorAll('.book');
+
+    books.forEach(book => {
+        let title = book.querySelector('.title-container').textContent.toLowerCase();
+        let author = book.querySelector('.author').textContent.toLowerCase();
+        if (title.includes(searchInput) || author.includes(searchInput)) {
+            book.style.display = 'block';
+        } else {
+            book.style.display = 'none';
+        }
+    });
+});
