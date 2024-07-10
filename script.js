@@ -1,4 +1,3 @@
-// Existing code...
 let showBookButton = document.querySelector('#showBookButton');
 let addBookModal = document.querySelector('#addBookModal');
 
@@ -42,19 +41,36 @@ function isNoBook(array) {
 
 isNoBook(myLibrary);
 
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;   
-}
+// function Book(title, author, pages, status) {
+//     this.title = title;
+//     this.author = author;
+//     this.pages = pages;
+//     this.status = status;   
+// }
 
-Book.prototype.isRead = function (){
-    return this.status = 'Already Read'
-}
+// Book.prototype.isRead = function (){
+//     return this.status = 'Already Read'
+// }
 
-Book.prototype.isNotRead = function (){
-    return this.status = 'Not yet read'
+// Book.prototype.isNotRead = function (){
+//     return this.status = 'Not yet read'
+// }
+
+class Book{
+    constructor(title, author, pages, status){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+    }
+
+    isRead(){
+        return this.status = 'Already Read'
+    }
+
+    isNotRead(){
+        return this.status = 'Not yet read'
+    }
 }
 
 submitButton.addEventListener('click', (e) => {
@@ -162,7 +178,6 @@ function addBookToLibrary(inputReadStatus) {
         }
     })
 
-    console.log(bookIndex)
 }
 
 searchBar.addEventListener('input', () => {
